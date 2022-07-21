@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
 
+import { useContext } from 'react';
+import styles from './App.module.css'
+import Navbar from './components/Navbar'
+import UserSection from './components/UserSection';
+import Value from './Value';
+import Spinner from './components/Spinner';
 function App() {
+  const data=useContext(Value);
+  console.log("Does it render")
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={styles.App}>
+      <Navbar></Navbar>
+      {
+        data.loader?<Spinner/>:''
+      }
+      {
+       !data.loader&&data.userdata?<UserSection></UserSection> :''
+      }
     </div>
   );
 }
