@@ -7,7 +7,6 @@ import Value from './Value';
 import Spinner from './components/Spinner';
 function App() {
   const data=useContext(Value);
-  console.log("Does it render")
   return (
     <div className={styles.App}>
       <Navbar></Navbar>
